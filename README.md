@@ -11,6 +11,7 @@ A Python machine learning project that classifies SMS messages as **spam** or **
 - Custom probability threshold for improved spam detection
 - Allows live message classification through terminal input
 - Saves and reloads the trained model and vectorizer with joblib
+- Includes a Flask web app for browser-based message classification
 
 ## Technologies Used
 
@@ -28,6 +29,9 @@ ai-spam-classifier/
   - vectorizer.pkl
 - src/
   - spam_classifier.py
+- templates
+  - index.html
+- app.py
 - requirements.txt
 - README.md
 - .gitignore
@@ -55,7 +59,19 @@ ai-spam-classifier/
    pip install -r requirements.txt
    ```
 
-4. Run the project:
+4. Run the Web App
+
+   ```bash
+   python app.py
+   ```
+
+   Then open;
+
+   ```bash
+   http://127.0.0.1:5000
+   ```
+
+5. Run the project:
 
    ```bash
    python src/spam_classifier.py
@@ -119,4 +135,4 @@ This comparison highlights the importance of testing multiple models rather than
 - Add user input from the terminal
 - Save and reload the trained model
 - Try other classifiers such as Logistic Regression
-- Build a simple web app version
+- Deploy the Flask app online
