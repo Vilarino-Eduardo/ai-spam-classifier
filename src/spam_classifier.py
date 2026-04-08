@@ -4,6 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score, classification_report
 
 SPAM_THRESHOLD = 0.40
 MODEL_PATH = "model/spam_model.pkl"
@@ -24,7 +25,7 @@ def train_and_save():
     X = df["message"]
     y = df["label_num"]
 
-    X_train, _, y_train, _ = train_test_split(
+    X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
     )
 
@@ -35,21 +36,26 @@ def train_and_save():
     )
 
     X_train_vec = vectorizer.fit_transform(X_train)
+    X_test_vec = vectorizer.transform(X_test)
 
     model = MultinomialNB()
     model.fit(X_train_vec, y_train)
 
-    # Create model folder if it doesn't exist
+    y_pred = model.predict(X_test_vec)
+    accuracy = accuracy_score(y_test, y_pred)
+
+    print(f"Accuracy: {accuracy:.4f}")
+    print("\nClassification Report:")
+    print(classification_report(y_test, y_pred))
+
     os.makedirs("model", exist_ok=True)
 
-    # Save model and vectorizer
     joblib.dump(model, MODEL_PATH)
     joblib.dump(vectorizer, VECTORIZER_PATH)
 
     print("Model and vectorizer saved.")
 
     return model, vectorizer
-
 
 def load_model():
     if os.path.exists(MODEL_PATH) and os.path.exists(VECTORIZER_PATH):
