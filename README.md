@@ -95,6 +95,25 @@ Goodbye.
 - How prediction probabilities can be used with a custom threshold
 - How to structure a machine learning project for GitHub
 
+## Two models were tested for this project:
+
+- Multinomial Naive Bayes
+- Logistic Regression
+
+# Results
+
+    |        Model        | Accuracy | Spam Recall |
+    |---------------------|----------|-------------|
+    | Naive Bayes         | ~97.3%   | 0.80        |
+    | Logistic Regression | ~97.1%   | 0.79        |
+
+# Conclusion
+
+Multinomial Naive Bayes performed slightly better on this dataset, especially in detecting spam messages.  
+For this reason, it was chosen as the final model.
+
+This comparison highlights the importance of testing multiple models rather than assuming a more complex model will perform better.
+
 ## Future Improvements
 
 - Add user input from the terminal
