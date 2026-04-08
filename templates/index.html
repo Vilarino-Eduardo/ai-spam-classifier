@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Spam Classifier</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        textarea {
+            width: 400px;
+            height: 100px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .spam {
+            color: red;
+        }
+
+        .ham {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>AI Spam Classifier</h1>
+
+    <form method="POST">
+        <textarea name="message" placeholder="Enter your message here...">{{ message or "" }}</textarea>
+        <br>
+        <button type="submit">Classify</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            <p class="{{ 'spam' if prediction == 'SPAM' else 'ham' }}">
+                Prediction: {{ prediction }}
+            </p>
+            <p>Spam probability: {{ probability }}</p>
+        </div>
+    {% endif %}
+
+</body>
+</html>
