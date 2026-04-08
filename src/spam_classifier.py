@@ -1,9 +1,13 @@
+import os
+import joblib
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
 SPAM_THRESHOLD = 0.40
+MODEL_PATH = "model/spam_model.pkl"
+VECTORIZER_PATH = "model/vectorizer.pkl"
 
 
 def load_data():
@@ -14,11 +18,13 @@ def load_data():
     return df
 
 
-def train_model(df):
+def train_and_save():
+    df = load_data()
+
     X = df["message"]
     y = df["label_num"]
 
-    X_train, X_test, y_train, y_test = train_test_split(
+    X_train, _, y_train, _ = train_test_split(
         X, y, test_size=0.2, random_state=42
     )
 
@@ -33,7 +39,27 @@ def train_model(df):
     model = MultinomialNB()
     model.fit(X_train_vec, y_train)
 
+    # Create model folder if it doesn't exist
+    os.makedirs("model", exist_ok=True)
+
+    # Save model and vectorizer
+    joblib.dump(model, MODEL_PATH)
+    joblib.dump(vectorizer, VECTORIZER_PATH)
+
+    print("Model and vectorizer saved.")
+
     return model, vectorizer
+
+
+def load_model():
+    if os.path.exists(MODEL_PATH) and os.path.exists(VECTORIZER_PATH):
+        model = joblib.load(MODEL_PATH)
+        vectorizer = joblib.load(VECTORIZER_PATH)
+        print("Loaded existing model.")
+        return model, vectorizer
+    else:
+        print("No saved model found. Training new model...")
+        return train_and_save()
 
 
 def predict_message(model, vectorizer, message):
@@ -47,10 +73,9 @@ def predict_message(model, vectorizer, message):
 
 
 def main():
-    df = load_data()
-    model, vectorizer = train_model(df)
+    model, vectorizer = load_model()
 
-    print("AI Spam Classifier")
+    print("\nAI Spam Classifier")
     print("Type a message to classify it.")
     print("Type 'exit' to quit.")
 

@@ -10,6 +10,7 @@ A Python machine learning project that classifies SMS messages as **spam** or **
 - Predict spam vs ham messages
 - Custom probability threshold for improved spam detection
 - Allows live message classification through terminal input
+- Saves and reloads the trained model and vectorizer with joblib
 
 ## Technologies Used
 
@@ -22,6 +23,9 @@ A Python machine learning project that classifies SMS messages as **spam** or **
 ai-spam-classifier/
 - data/
   - spam.csv
+- model/
+  - spam_model.pkl
+│ - vectorizer.pkl
 - src/
   - spam_classifier.py
 - requirements.txt
