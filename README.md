@@ -25,7 +25,7 @@ ai-spam-classifier/
   - spam.csv
 - model/
   - spam_model.pkl
-│ - vectorizer.pkl
+  - vectorizer.pkl
 - src/
   - spam_classifier.py
 - requirements.txt
