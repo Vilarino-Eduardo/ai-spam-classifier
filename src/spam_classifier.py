@@ -50,17 +50,19 @@ def main():
     df = load_data()
     model, vectorizer = train_model(df)
 
-    test_messages = [
-        "Congratulations! You've won a free iPhone, click here now!",
-        "Hey, are we still meeting tomorrow?",
-        "URGENT! Claim your prize now!!!",
-        "Can you send me the notes from class?"
-    ]
+    print("AI Spam Classifier")
+    print("Type a message to classify it.")
+    print("Type 'exit' to quit.")
 
-    print("\nCustom Predictions:")
-    for msg in test_messages:
-        label, probs = predict_message(model, vectorizer, msg)
-        print(f"\nMessage: {msg}")
+    while True:
+        user_message = input("\nEnter a message: ")
+
+        if user_message.lower() == "exit":
+            print("Goodbye.")
+            break
+
+        label, probs = predict_message(model, vectorizer, user_message)
+
         print("Prediction:", label)
         print(f"Spam probability: {probs[1]:.4f}")
 

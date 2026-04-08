@@ -2,13 +2,14 @@
 
 A Python machine learning project that classifies SMS messages as **spam** or **ham** using **scikit-learn** and **TF-IDF vectorization**.
 
-## Features
+## Key Features
 
-- Loads and cleans SMS message data
-- Converts text into numerical features with TF-IDF
-- Trains a Naive Bayes classifier
-- Predicts whether messages are spam or ham
-- Uses a custom spam probability threshold for improved detection
+- Clean and preprocess raw text data
+- Convert text into numerical vectors using TF-IDF
+- Train a Multinomial Naive Bayes classifier
+- Predict spam vs ham messages
+- Custom probability threshold for improved spam detection
+- Allows live message classification through terminal input
 
 ## Technologies Used
 
@@ -62,6 +63,25 @@ ai-spam-classifier/
 - "Hey, are we still meeting tomorrow?" → HAM
 - "URGENT! Claim your prize now!!!" → SPAM
 - "Can you send me the notes from class?" → HAM
+
+## CLI Example
+
+```bash
+AI Spam Classifier
+Type a message to classify it.
+Type 'exit' to quit.
+
+Enter a message: Congratulations! You've won a free iPhone, click here now!
+Prediction: SPAM
+Spam probability: 0.4733
+
+Enter a message: Hey, are we still meeting tomorrow?
+Prediction: HAM
+Spam probability: 0.0050
+
+Enter a message: exit
+Goodbye.
+```
 
 ## What I Learned
 
