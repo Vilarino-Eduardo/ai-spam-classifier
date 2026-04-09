@@ -2,6 +2,12 @@
 
 A Python machine learning project that classifies SMS messages as **spam** or **ham** using **scikit-learn** and **TF-IDF vectorization**.
 
+## Project Overview
+
+This project demonstrates how machine learning can be applied to automatically classify SMS messages as spam or legitimate (ham) using natural language processing techniques.
+
+It includes a trained model, a Flask web interface for real-time predictions, and probability scoring to provide confidence in the results.
+
 ## Key Features
 
 - Clean and preprocess raw text data
