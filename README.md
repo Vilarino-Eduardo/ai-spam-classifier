@@ -10,14 +10,11 @@ It includes a trained model, a Flask web interface for real-time predictions, an
 
 ## Key Features
 
-- Clean and preprocess raw text data
-- Convert text into numerical vectors using TF-IDF
-- Train a Multinomial Naive Bayes classifier
-- Predict spam vs ham messages
-- Custom probability threshold for improved spam detection
-- Allows live message classification through terminal input
-- Saves and reloads the trained model and vectorizer with joblib
-- Includes a Flask web app for browser-based message classification
+- Text preprocessing and feature extraction using NLP techniques  
+- Machine learning model for spam classification (spam vs ham)  
+- Probability scoring to show prediction confidence  
+- Flask-based web interface for real-time user interaction  
+- Clean separation between model logic and application layer
 
 ## Technologies Used
 
