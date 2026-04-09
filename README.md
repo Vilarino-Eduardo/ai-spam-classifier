@@ -136,3 +136,13 @@ This comparison highlights the importance of testing multiple models rather than
 - Save and reload the trained model
 - Try other classifiers such as Logistic Regression
 - Deploy the Flask app online
+
+- ## Example Output
+
+These are example predictions from the web app interface.
+
+### Spam Prediction
+![Spam Example](images/spam-example.png)
+
+### Ham Prediction
+![Ham Example](images/ham-example.png)
